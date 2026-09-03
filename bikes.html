@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Bikes | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .bike-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(225,6,0,0.12); }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    .glass { background: rgba(26,26,26,0.85); backdrop-filter: blur(12px); }
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+    .filter-chip.active { background: #E10600; border-color: #E10600; color: white; }
+  </style>
+</head>
+<body class="bg-primary text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-xl">V</div>
+          <div>
+            <span class="font-bold text-xl">Velocity</span><span class="text-accent font-bold text-xl">Motors</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium hover:text-accent transition">Home</a>
+          <a href="bikes.html" class="text-sm font-medium text-accent">Bikes</a>
+          <a href="about.html" class="text-sm font-medium hover:text-accent transition">About</a>
+          <a href="book.html" class="text-sm font-medium hover:text-accent transition">Test Ride</a>
+          <a href="contact.html" class="text-sm font-medium hover:text-accent transition">Contact</a>
+          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-gray-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 hover:text-accent">Home</a>
+        <a href="bikes.html" class="block py-2 text-accent font-medium">Bikes</a>
+        <a href="about.html" class="block py-2 hover:text-accent">About</a>
+        <a href="book.html" class="block py-2 hover:text-accent">Test Ride</a>
+        <a href="contact.html" class="block py-2 hover:text-accent">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="pt-28 pb-10 bg-secondary">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-black mb-3">All Bikes</h1>
+      <p class="text-gray-400">Pakistan ki popular motorcycles – genuine & best prices</p>
+    </div>
+  </section>
+
+  <!-- Filters + Grid -->
+  <section class="py-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Search & Filters -->
+      <div class="flex flex-col lg:flex-row gap-6 mb-10">
+        <div class="flex-1">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+            <input type="text" id="search-input" placeholder="Search by name or brand..." 
+                   class="w-full bg-secondary border border-gray-700 rounded-full py-3 pl-12 pr-4 focus:outline-none focus:border-accent transition">
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <select id="brand-filter" class="bg-secondary border border-gray-700 rounded-full px-5 py-3 focus:outline-none focus:border-accent">
+            <option value="">All Brands</option>
+            <option value="Honda">Honda</option>
+            <option value="Yamaha">Yamaha</option>
+            <option value="Suzuki">Suzuki</option>
+            <option value="Unique">Unique</option>
+            <option value="Road Prince">Road Prince</option>
+            <option value="Super Power">Super Power</option>
+            <option value="Jolta">Jolta</option>
+          </select>
+          <select id="category-filter" class="bg-secondary border border-gray-700 rounded-full px-5 py-3 focus:outline-none focus:border-accent">
+            <option value="">All Categories</option>
+            <option value="70cc">70cc</option>
+            <option value="100cc">100cc</option>
+            <option value="125cc">125cc</option>
+            <option value="150cc">150cc</option>
+            <option value="Electric">Electric</option>
+          </select>
+          <select id="sort-filter" class="bg-secondary border border-gray-700 rounded-full px-5 py-3 focus:outline-none focus:border-accent">
+            <option value="default">Sort by</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Name A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results count -->
+      <p class="text-gray-400 mb-6" id="results-count">Showing all bikes</p>
+
+      <!-- Bikes Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="bikes-grid">
+        <!-- Injected by JS -->
+      </div>
+
+      <div id="no-results" class="hidden text-center py-20">
+        <i class="fas fa-motorcycle text-6xl text-gray-700 mb-4"></i>
+        <p class="text-xl text-gray-400">No bikes found matching your filters.</p>
+        <button onclick="resetFilters()" class="mt-4 text-accent font-semibold hover:underline">Clear all filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary border-t border-gray-800 pt-12 pb-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+      © 2026 Velocity Motors Pakistan. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <script src="js/bikes-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let filteredBikes = [...bikesData];
+
+    function renderBikes(bikes) {
+      const grid = document.getElementById('bikes-grid');
+      const noResults = document.getElementById('no-results');
+      const countEl = document.getElementById('results-count');
+
+      if (bikes.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        countEl.textContent = 'No bikes found';
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      countEl.textContent = `Showing ${bikes.length} bike${bikes.length > 1 ? 's' : ''}`;
+
+      grid.innerHTML = bikes.map(bike => `
+        <div class="bike-card bg-secondary border border-gray-800 rounded-2xl overflow-hidden transition duration-300">
+          <div class="h-48 bg-gray-900 relative overflow-hidden">
+            <img src="${bike.image}" alt="${bike.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+            <span class="absolute top-3 left-3 bg-accent text-xs font-bold px-2.5 py-1 rounded">${bike.category}</span>
+          </div>
+          <div class="p-5">
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">${bike.brand}</p>
+            <h3 class="font-bold text-lg mb-2">${bike.name}</h3>
+            <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
+              <span><i class="fas fa-cog mr-1"></i>${bike.engine}</span>
+              <span><i class="fas fa-gas-pump mr-1"></i>${bike.fuel}</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-accent font-bold text-xl">Rs. ${bike.price.toLocaleString()}</p>
+              <a href="bike-detail.html?id=${bike.id}" class="text-sm font-semibold border border-gray-600 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition">
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function applyFilters() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const brand = document.getElementById('brand-filter').value;
+      const category = document.getElementById('category-filter').value;
+      const sort = document.getElementById('sort-filter').value;
+
+      filteredBikes = bikesData.filter(bike => {
+        const matchSearch = bike.name.toLowerCase().includes(search) || bike.brand.toLowerCase().includes(search);
+        const matchBrand = !brand || bike.brand === brand;
+        const matchCategory = !category || bike.category === category;
+        return matchSearch && matchBrand && matchCategory;
+      });
+
+      if (sort === 'price-low') filteredBikes.sort((a, b) => a.price - b.price);
+      else if (sort === 'price-high') filteredBikes.sort((a, b) => b.price - a.price);
+      else if (sort === 'name') filteredBikes.sort((a, b) => a.name.localeCompare(b.name));
+
+      renderBikes(filteredBikes);
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('brand-filter').value = '';
+      document.getElementById('category-filter').value = '';
+      document.getElementById('sort-filter').value = 'default';
+      applyFilters();
+    }
+
+    // Event listeners
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+    document.getElementById('brand-filter').addEventListener('change', applyFilters);
+    document.getElementById('category-filter').addEventListener('change', applyFilters);
+    document.getElementById('sort-filter').addEventListener('change', applyFilters);
+
+    // Initial load + URL category
+    document.addEventListener('DOMContentLoaded', () => {
+      const cat = getQueryParam('cat');
+      if (cat) {
+        const select = document.getElementById('category-filter');
+        // Map common URL values
+        if (cat === '70cc') select.value = '70cc';
+        else if (cat === '125cc') select.value = '125cc';
+        else if (cat === '150cc') select.value = '150cc';
+        else if (cat === 'electric') select.value = 'Electric';
+        else if (cat === 'sports') select.value = '150cc';
+      }
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

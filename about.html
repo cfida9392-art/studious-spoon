@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    .glass { background: rgba(26,26,26,0.85); backdrop-filter: blur(12px); }
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+  </style>
+</head>
+<body class="bg-primary text-white">
+
+  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-xl">V</div>
+          <div><span class="font-bold text-xl">Velocity</span><span class="text-accent font-bold text-xl">Motors</span></div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium hover:text-accent transition">Home</a>
+          <a href="bikes.html" class="text-sm font-medium hover:text-accent transition">Bikes</a>
+          <a href="about.html" class="text-sm font-medium text-accent">About</a>
+          <a href="book.html" class="text-sm font-medium hover:text-accent transition">Test Ride</a>
+          <a href="contact.html" class="text-sm font-medium hover:text-accent transition">Contact</a>
+          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-gray-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 hover:text-accent">Home</a>
+        <a href="bikes.html" class="block py-2 hover:text-accent">Bikes</a>
+        <a href="about.html" class="block py-2 text-accent font-medium">About</a>
+        <a href="book.html" class="block py-2 hover:text-accent">Test Ride</a>
+        <a href="contact.html" class="block py-2 hover:text-accent">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-28 pb-16 bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">About Velocity Motors</h1>
+      <p class="text-gray-400 text-lg">Pakistan Ka Trusted Bike Showroom</p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="prose prose-invert max-w-none">
+        <h2 class="text-2xl font-bold mb-6">Our Story</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Velocity Motors Pakistan 2018 se customers ko genuine motorcycles, transparent pricing aur honest advice de raha hai. 
+          Humne shuruwat ek chhoti si dealership se ki thi, aaj hum Pakistan ke major cities mein trusted name ban chuke hain.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          Hamara focus hamesha customer satisfaction par raha hai. Chahe aap pehli bike kharid rahe hon ya upgrade kar rahe hon, 
+          hamari team aapko best recommendation deti hai – bina kisi pressure ke.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-accent mb-2">8+</div>
+          <p class="text-gray-400">Years of Trust</p>
+        </div>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-accent mb-2">12,000+</div>
+          <p class="text-gray-400">Happy Customers</p>
+        </div>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-accent mb-2">15+</div>
+          <p class="text-gray-400">Top Brands</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Vision -->
+  <section class="py-16 bg-secondary">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="bg-primary border border-gray-800 rounded-2xl p-8">
+        <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-bullseye text-accent text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Our Mission</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Har Pakistani ko quality motorcycle accessible banana – fair price, genuine product aur reliable after-sales support ke saath.
+        </p>
+      </div>
+      <div class="bg-primary border border-gray-800 rounded-2xl p-8">
+        <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-eye text-accent text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Our Vision</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Pakistan ka number 1 multi-brand bike showroom ban'na jahan customers ko complete peace of mind mile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Customers Trust Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <i class="fas fa-check text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Authorized & Genuine</h4>
+            <p class="text-gray-400 text-sm">Sirf authorized sources se bikes. Papers, warranty sab clear.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <i class="fas fa-check text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Transparent Pricing</h4>
+            <p class="text-gray-400 text-sm">Koi hidden charges nahi. Jo price website pe hai wahi final.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <i class="fas fa-check text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">Easy Financing</h4>
+            <p class="text-gray-400 text-sm">Leading banks ke saath installment plans available.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <i class="fas fa-check text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1">After-Sales Support</h4>
+            <p class="text-gray-400 text-sm">Service, spare parts aur guidance – long term relationship.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-accent text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to find your next bike?</h2>
+    <a href="bikes.html" class="bg-black text-white px-8 py-3 rounded-full font-bold inline-block hover:bg-gray-900 transition">Explore Bikes</a>
+  </section>
+
+  <footer class="bg-secondary border-t border-gray-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+      © 2026 Velocity Motors Pakistan. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

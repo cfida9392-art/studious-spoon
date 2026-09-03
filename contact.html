@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    .glass { background: rgba(26,26,26,0.85); backdrop-filter: blur(12px); }
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+    input, textarea {
+      background: #1A1A1A;
+      border: 1px solid #333;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #E10600;
+    }
+  </style>
+</head>
+<body class="bg-primary text-white">
+
+  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-xl">V</div>
+          <div><span class="font-bold text-xl">Velocity</span><span class="text-accent font-bold text-xl">Motors</span></div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium hover:text-accent transition">Home</a>
+          <a href="bikes.html" class="text-sm font-medium hover:text-accent transition">Bikes</a>
+          <a href="about.html" class="text-sm font-medium hover:text-accent transition">About</a>
+          <a href="book.html" class="text-sm font-medium hover:text-accent transition">Test Ride</a>
+          <a href="contact.html" class="text-sm font-medium text-accent">Contact</a>
+          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-gray-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 hover:text-accent">Home</a>
+        <a href="bikes.html" class="block py-2 hover:text-accent">Bikes</a>
+        <a href="about.html" class="block py-2 hover:text-accent">About</a>
+        <a href="book.html" class="block py-2 hover:text-accent">Test Ride</a>
+        <a href="contact.html" class="block py-2 text-accent font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-28 pb-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-black mb-3">Contact Us</h1>
+        <p class="text-gray-400">Sawal ho ya visit karna ho – hum yahan hain.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-6 flex gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-accent text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Showroom Address</h3>
+              <p class="text-gray-400 text-sm">Main Boulevard, Gulberg III<br>Lahore, Pakistan</p>
+            </div>
+          </div>
+
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-6 flex gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-accent text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Phone</h3>
+              <p class="text-gray-400 text-sm">+92 300 1234567<br>+92 42 12345678</p>
+            </div>
+          </div>
+
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-6 flex gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-accent text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Email</h3>
+              <p class="text-gray-400 text-sm">info@velocitymotors.pk<br>sales@velocitymotors.pk</p>
+            </div>
+          </div>
+
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-6 flex gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-clock text-accent text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Working Hours</h3>
+              <p class="text-gray-400 text-sm">Monday – Saturday: 10:00 AM – 8:00 PM<br>Sunday: 12:00 PM – 6:00 PM</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 pt-2">
+            <a href="#" class="w-11 h-11 bg-secondary border border-gray-700 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-11 h-11 bg-secondary border border-gray-700 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-11 h-11 bg-secondary border border-gray-700 rounded-full flex items-center justify-center hover:bg-accent hover:border-accent transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://wa.me/923001234567" class="w-11 h-11 bg-secondary border border-gray-700 rounded-full flex items-center justify-center hover:bg-green-600 hover:border-green-600 transition">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6 md:p-8">
+          <h2 class="text-xl font-bold mb-6">Send us a Message</h2>
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Name *</label>
+              <input type="text" required placeholder="Your name" class="w-full rounded-lg px-4 py-3">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Phone *</label>
+              <input type="tel" required placeholder="03XX-XXXXXXX" class="w-full rounded-lg px-4 py-3">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Email</label>
+              <input type="email" placeholder="your@email.com" class="w-full rounded-lg px-4 py-3">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Message *</label>
+              <textarea required rows="4" placeholder="How can we help you?" class="w-full rounded-lg px-4 py-3"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-full font-bold">
+              Send Message
+            </button>
+          </form>
+          <div id="contact-success" class="hidden mt-4 text-center text-green-400">
+            <i class="fas fa-check-circle mr-2"></i> Message sent! We'll reply soon.
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Placeholder -->
+      <div class="mt-12 bg-secondary border border-gray-800 rounded-2xl overflow-hidden h-64 flex items-center justify-center">
+        <div class="text-center text-gray-500">
+          <i class="fas fa-map-marked-alt text-4xl mb-3"></i>
+          <p>Google Maps Embed Placeholder</p>
+          <p class="text-sm">Main Boulevard, Gulberg, Lahore</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-secondary border-t border-gray-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+      © 2026 Velocity Motors Pakistan. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

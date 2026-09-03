@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velocity Motors Pakistan | Pakistan Ka Trusted Bike Showroom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+            silver: '#C0C0C0',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg {
+      background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.85)), 
+                  url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+    .bike-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(225,6,0,0.15); }
+    .nav-link:hover { color: #E10600; }
+    .btn-primary { background: #E10600; transition: all 0.3s; }
+    .btn-primary:hover { background: #c00500; transform: scale(1.05); }
+    .glass { background: rgba(26,26,26,0.8); backdrop-filter: blur(12px); }
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-primary text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-xl">V</div>
+          <div>
+            <span class="font-bold text-xl tracking-tight">Velocity</span>
+            <span class="text-accent font-bold text-xl">Motors</span>
+          </div>
+        </a>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium text-accent">Home</a>
+          <a href="bikes.html" class="nav-link text-sm font-medium hover:text-accent transition">Bikes</a>
+          <a href="about.html" class="nav-link text-sm font-medium hover:text-accent transition">About</a>
+          <a href="book.html" class="nav-link text-sm font-medium hover:text-accent transition">Test Ride</a>
+          <a href="contact.html" class="nav-link text-sm font-medium hover:text-accent transition">Contact</a>
+          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-gray-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 text-accent font-medium">Home</a>
+        <a href="bikes.html" class="block py-2 hover:text-accent">Bikes</a>
+        <a href="about.html" class="block py-2 hover:text-accent">About</a>
+        <a href="book.html" class="block py-2 hover:text-accent">Test Ride</a>
+        <a href="contact.html" class="block py-2 hover:text-accent">Contact</a>
+        <a href="book.html" class="block btn-primary text-center py-3 rounded-full font-semibold mt-2">Book Test Ride</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-3xl">
+        <p class="text-accent font-semibold tracking-widest uppercase text-sm mb-4">Pakistan Ka Trusted Bike Showroom</p>
+        <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+          Ride Beyond<br>
+          <span class="text-accent">Limits</span>
+        </h1>
+        <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-xl">
+          Pakistan ki sab se trusted bike showroom. Honda, Yamaha, Suzuki aur top local brands ki latest models ab ek click par.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="bikes.html" class="btn-primary px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2">
+            Explore Bikes <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="book.html" class="border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition">
+            Book Test Ride
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-16 bg-secondary">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Browse by Category</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+        <a href="bikes.html?cat=70cc" class="bg-primary border border-gray-800 rounded-2xl p-6 text-center hover:border-accent transition group">
+          <div class="text-4xl mb-3 group-hover:scale-110 transition">🏍️</div>
+          <h3 class="font-bold text-lg">70cc</h3>
+          <p class="text-gray-400 text-sm mt-1">Daily Commute</p>
+        </a>
+        <a href="bikes.html?cat=125cc" class="bg-primary border border-gray-800 rounded-2xl p-6 text-center hover:border-accent transition group">
+          <div class="text-4xl mb-3 group-hover:scale-110 transition">⚡</div>
+          <h3 class="font-bold text-lg">125cc</h3>
+          <p class="text-gray-400 text-sm mt-1">Power & Style</p>
+        </a>
+        <a href="bikes.html?cat=150cc" class="bg-primary border border-gray-800 rounded-2xl p-6 text-center hover:border-accent transition group">
+          <div class="text-4xl mb-3 group-hover:scale-110 transition">🔥</div>
+          <h3 class="font-bold text-lg">150cc+</h3>
+          <p class="text-gray-400 text-sm mt-1">Performance</p>
+        </a>
+        <a href="bikes.html?cat=sports" class="bg-primary border border-gray-800 rounded-2xl p-6 text-center hover:border-accent transition group">
+          <div class="text-4xl mb-3 group-hover:scale-110 transition">🏁</div>
+          <h3 class="font-bold text-lg">Sports</h3>
+          <p class="text-gray-400 text-sm mt-1">Thrill Seekers</p>
+        </a>
+        <a href="bikes.html?cat=electric" class="bg-primary border border-gray-800 rounded-2xl p-6 text-center hover:border-accent transition group">
+          <div class="text-4xl mb-3 group-hover:scale-110 transition">🔋</div>
+          <h3 class="font-bold text-lg">Electric</h3>
+          <p class="text-gray-400 text-sm mt-1">Future Ready</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Bikes -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Featured Bikes</h2>
+          <p class="text-gray-400 mt-2">Pakistan ki sab se popular models</p>
+        </div>
+        <a href="bikes.html" class="hidden md:inline-flex items-center gap-2 text-accent font-semibold hover:underline">
+          View All <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="featured-bikes">
+        <!-- Bikes will be injected by JS -->
+      </div>
+
+      <div class="text-center mt-10 md:hidden">
+        <a href="bikes.html" class="btn-primary px-8 py-3 rounded-full font-semibold inline-block">View All Bikes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 bg-secondary">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Why Choose Velocity Motors?</h2>
+      <p class="text-gray-400 text-center mb-14 max-w-2xl mx-auto">Pakistan ka trusted name for genuine bikes, transparent pricing aur best after-sales service.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <i class="fas fa-shield-alt text-accent text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2">100% Genuine</h3>
+          <p class="text-gray-400 text-sm">Authorized dealers se direct. No fake, no cut pieces.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <i class="fas fa-tag text-accent text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2">Best Prices</h3>
+          <p class="text-gray-400 text-sm">Market ke competitive rates + exclusive offers.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <i class="fas fa-tools text-accent text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2">After Sales</h3>
+          <p class="text-gray-400 text-sm">Service, spare parts aur warranty support.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <i class="fas fa-handshake text-accent text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2">Easy Financing</h3>
+          <p class="text-gray-400 text-sm">Bank partners ke through easy installment plans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Customer Reviews</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6">
+          <div class="flex gap-1 text-accent mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-300 mb-6">"Honda CD 70 liya yahan se. Price bilkul market ke hisaab se thi aur delivery bhi same day ho gayi. Highly recommended!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold">A</div>
+            <div>
+              <p class="font-semibold">Ahmed Khan</p>
+              <p class="text-gray-500 text-sm">Lahore</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6">
+          <div class="flex gap-1 text-accent mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-300 mb-6">"Yamaha YBR 125 ka test ride book kiya. Staff bohot cooperative tha. Finally bike le li aur experience zabardast raha."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold">S</div>
+            <div>
+              <p class="font-semibold">Sara Malik</p>
+              <p class="text-gray-500 text-sm">Karachi</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6">
+          <div class="flex gap-1 text-accent mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="text-gray-300 mb-6">"Best showroom for genuine Honda bikes. CB 150F liya, papers clear the aur service bhi on time mil rahi hai."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold">U</div>
+            <div>
+              <p class="font-semibold">Usman Ali</p>
+              <p class="text-gray-500 text-sm">Islamabad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-16 bg-accent">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Ride?</h2>
+      <p class="text-white/90 text-lg mb-8">Aaj hi test ride book karein aur apni dream bike experience karein.</p>
+      <a href="book.html" class="bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-900 transition inline-block">
+        Book Free Test Ride
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary border-t border-gray-800 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-9 h-9 bg-accent rounded-full flex items-center justify-center font-black">V</div>
+            <span class="font-bold text-xl">Velocity<span class="text-accent">Motors</span></span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">Pakistan ka trusted bike showroom. Genuine bikes, transparent deals aur customer-first service.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="index.html" class="hover:text-accent">Home</a></li>
+            <li><a href="bikes.html" class="hover:text-accent">All Bikes</a></li>
+            <li><a href="about.html" class="hover:text-accent">About Us</a></li>
+            <li><a href="book.html" class="hover:text-accent">Book Test Ride</a></li>
+            <li><a href="contact.html" class="hover:text-accent">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Categories</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="bikes.html?cat=70cc" class="hover:text-accent">70cc Bikes</a></li>
+            <li><a href="bikes.html?cat=125cc" class="hover:text-accent">125cc Bikes</a></li>
+            <li><a href="bikes.html?cat=150cc" class="hover:text-accent">150cc & Above</a></li>
+            <li><a href="bikes.html?cat=electric" class="hover:text-accent">Electric Bikes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-3 text-gray-400 text-sm">
+            <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-accent mt-1"></i> Main Boulevard, Gulberg, Lahore</li>
+            <li class="flex items-center gap-2"><i class="fas fa-phone text-accent"></i> +92 300 1234567</li>
+            <li class="flex items-center gap-2"><i class="fas fa-envelope text-accent"></i> info@velocitymotors.pk</li>
+          </ul>
+          <div class="flex gap-4 mt-5">
+            <a href="#" class="w-9 h-9 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-9 h-9 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-9 h-9 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+        © 2026 Velocity Motors Pakistan. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <script src="js/bikes-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Render featured bikes
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('featured-bikes');
+      const featured = bikesData.slice(0, 4);
+      container.innerHTML = featured.map(bike => `
+        <div class="bike-card bg-secondary border border-gray-800 rounded-2xl overflow-hidden transition duration-300">
+          <div class="h-48 bg-gray-900 relative overflow-hidden">
+            <img src="${bike.image}" alt="${bike.name}" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+            <span class="absolute top-3 left-3 bg-accent text-xs font-bold px-2 py-1 rounded">${bike.category}</span>
+          </div>
+          <div class="p-5">
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">${bike.brand}</p>
+            <h3 class="font-bold text-lg mb-2">${bike.name}</h3>
+            <div class="flex items-center gap-3 text-sm text-gray-400 mb-4">
+              <span><i class="fas fa-cog mr-1"></i>${bike.engine}</span>
+              <span><i class="fas fa-gas-pump mr-1"></i>${bike.fuel}</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-accent font-bold text-xl">Rs. ${bike.price.toLocaleString()}</p>
+              <a href="bike-detail.html?id=${bike.id}" class="text-sm font-semibold border border-gray-600 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition">View</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

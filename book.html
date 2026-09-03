@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Test Ride | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    .glass { background: rgba(26,26,26,0.85); backdrop-filter: blur(12px); }
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+    input, select, textarea {
+      background: #1A1A1A;
+      border: 1px solid #333;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #E10600;
+    }
+  </style>
+</head>
+<body class="bg-primary text-white">
+
+  <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-xl">V</div>
+          <div><span class="font-bold text-xl">Velocity</span><span class="text-accent font-bold text-xl">Motors</span></div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium hover:text-accent transition">Home</a>
+          <a href="bikes.html" class="text-sm font-medium hover:text-accent transition">Bikes</a>
+          <a href="about.html" class="text-sm font-medium hover:text-accent transition">About</a>
+          <a href="book.html" class="text-sm font-medium text-accent">Test Ride</a>
+          <a href="contact.html" class="text-sm font-medium hover:text-accent transition">Contact</a>
+          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-gray-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 hover:text-accent">Home</a>
+        <a href="bikes.html" class="block py-2 hover:text-accent">Bikes</a>
+        <a href="about.html" class="block py-2 hover:text-accent">About</a>
+        <a href="book.html" class="block py-2 text-accent font-medium">Test Ride</a>
+        <a href="contact.html" class="block py-2 hover:text-accent">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-28 pb-16">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-black mb-3">Book a Free Test Ride</h1>
+        <p class="text-gray-400">Apni pasandida bike ka experience karein. Form fill karein, hum call karenge.</p>
+      </div>
+
+      <form id="test-ride-form" class="bg-secondary border border-gray-800 rounded-2xl p-6 md:p-8 space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1.5">Full Name *</label>
+            <input type="text" name="name" required placeholder="Your full name"
+                   class="w-full rounded-lg px-4 py-3">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1.5">Phone Number *</label>
+            <input type="tel" name="phone" required placeholder="03XX-XXXXXXX"
+                   class="w-full rounded-lg px-4 py-3">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Email</label>
+          <input type="email" name="email" placeholder="your@email.com"
+                 class="w-full rounded-lg px-4 py-3">
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Preferred Bike *</label>
+          <select name="bike" id="bike-select" required class="w-full rounded-lg px-4 py-3">
+            <option value="">Select a bike</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm text-gray-400 mb-1.5">Preferred Date *</label>
+            <input type="date" name="date" required class="w-full rounded-lg px-4 py-3">
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-1.5">City *</label>
+            <select name="city" required class="w-full rounded-lg px-4 py-3">
+              <option value="">Select City</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Faisalabad">Faisalabad</option>
+              <option value="Multan">Multan</option>
+              <option value="Peshawar">Peshawar</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Message (Optional)</label>
+          <textarea name="message" rows="3" placeholder="Any special request..."
+                    class="w-full rounded-lg px-4 py-3"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full py-4 rounded-full font-bold text-lg">
+          Submit Request
+        </button>
+      </form>
+
+      <!-- Success Message -->
+      <div id="success-msg" class="hidden mt-8 bg-green-900/30 border border-green-700 rounded-2xl p-6 text-center">
+        <i class="fas fa-check-circle text-4xl text-green-500 mb-3"></i>
+        <h3 class="text-xl font-bold mb-2">Request Submitted!</h3>
+        <p class="text-gray-300">Shukriya! Hamari team jald hi aap se rabta karegi.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-secondary border-t border-gray-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+      © 2026 Velocity Motors Pakistan. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <script src="js/bikes-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Populate bike select
+    const select = document.getElementById('bike-select');
+    bikesData.forEach(bike => {
+      const opt = document.createElement('option');
+      opt.value = bike.name;
+      opt.textContent = `${bike.name} — Rs. ${bike.price.toLocaleString()}`;
+      select.appendChild(opt);
+    });
+
+    // Pre-select from URL
+    const preBike = getQueryParam('bike');
+    if (preBike) {
+      select.value = decodeURIComponent(preBike);
+    }
+
+    // Form submit
+    document.getElementById('test-ride-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('success-msg').classList.remove('hidden');
+      // In real site: send to backend / email / WhatsApp
+    });
+  </script>
+</body>
+</html>
