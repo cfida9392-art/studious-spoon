@@ -240,6 +240,20 @@
   <script src="js/bikes-data.js"></script>
   <script src="js/auth.js"></script>
   <script>
+    // Fallback auth if auth.js fails to load
+    if (typeof getCurrentUser !== 'function') {
+      window.getCurrentUser = function() {
+        try { return JSON.parse(localStorage.getItem("vm_user")); } catch(e) { return null; }
+      };
+      window.isLoggedIn = function() { return getCurrentUser() !== null; };
+      window.isAdmin = function() { const u = getCurrentUser(); return u && u.role === 'admin'; };
+      window.logout = function() { localStorage.removeItem("vm_user"); window.location.href = "login.html"; };
+      window.requireAdmin = function() {
+        if (!isLoggedIn()) { window.location.href = "login.html"; return; }
+        if (!isAdmin()) { alert("Access Denied! Admin only."); window.location.href = "index.html"; }
+      };
+    }
+
     // Protect admin page
     requireAdmin();
 

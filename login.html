@@ -118,15 +118,44 @@
     </p>
   </div>
 
-  <script src="js/auth.js"></script>
   <script>
+    // ========== AUTH (embedded so it always works) ==========
+    const AUTH_USERS = [
+      { id: 1, username: "admin", password: "admin123", role: "admin", name: "Admin", email: "admin@velocitymotors.pk" },
+      { id: 2, username: "user",  password: "user123",  role: "user",  name: "Customer", email: "user@example.com" },
+      { id: 3, username: "ali",   password: "ali123",   role: "user",  name: "Ali Khan", email: "ali@example.com" }
+    ];
+
+    function getCurrentUser() {
+      try {
+        const userStr = localStorage.getItem("vm_user");
+        return userStr ? JSON.parse(userStr) : null;
+      } catch(e) { return null; }
+    }
+
+    function isLoggedIn() {
+      return getCurrentUser() !== null;
+    }
+
+    function doLogin(username, password) {
+      const user = AUTH_USERS.find(
+        u => u.username.toLowerCase() === username.toLowerCase() && u.password === password
+      );
+      if (user) {
+        const safeUser = { id: user.id, username: user.username, role: user.role, name: user.name, email: user.email };
+        localStorage.setItem("vm_user", JSON.stringify(safeUser));
+        return { success: true, user: safeUser };
+      }
+      return { success: false, message: "Invalid username or password" };
+    }
+
+    // ========== UI ==========
     let currentTab = 'user';
 
     function switchTab(tab) {
       currentTab = tab;
       const userBtn = document.getElementById('tab-user');
       const adminBtn = document.getElementById('tab-admin');
-
       if (tab === 'user') {
         userBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition bg-accent text-white";
         adminBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition text-gray-400 hover:text-white";
@@ -150,46 +179,51 @@
 
     document.getElementById('login-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value;
       const errorDiv = document.getElementById('error-msg');
       const successDiv = document.getElementById('success-msg');
-      
+
       errorDiv.classList.add('hidden');
       successDiv.classList.add('hidden');
 
-      const result = login(username, password);
+      if (!username || !password) {
+        errorDiv.classList.remove('hidden');
+        document.getElementById('error-text').textContent = "Please enter username and password";
+        return;
+      }
+
+      const result = doLogin(username, password);
 
       if (result.success) {
-        // Check if trying to login as admin with user account
+        // If Admin tab selected but user account → warn
         if (currentTab === 'admin' && result.user.role !== 'admin') {
           errorDiv.classList.remove('hidden');
-          document.getElementById('error-text').textContent = "This account is not an Admin account.";
+          document.getElementById('error-text').textContent = "This is not an Admin account. Switch to User Login tab.";
           localStorage.removeItem("vm_user");
           return;
         }
 
         successDiv.classList.remove('hidden');
-        
-        setTimeout(() => {
+
+        setTimeout(function() {
           if (result.user.role === 'admin') {
             window.location.href = 'admin.html';
           } else {
-            const redirect = new URLSearchParams(window.location.search).get('redirect');
-            window.location.href = redirect || 'index.html';
+            window.location.href = 'index.html';
           }
-        }, 1000);
+        }, 800);
       } else {
         errorDiv.classList.remove('hidden');
-        document.getElementById('error-text').textContent = result.message;
+        document.getElementById('error-text').textContent = result.message || "Invalid username or password";
       }
     });
 
-    // If already logged in, redirect
+    // Already logged in? Redirect
     if (isLoggedIn()) {
       const user = getCurrentUser();
-      if (user.role === 'admin') {
+      if (user && user.role === 'admin') {
         window.location.href = 'admin.html';
       } else {
         window.location.href = 'index.html';
