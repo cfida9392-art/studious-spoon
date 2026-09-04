@@ -1,4 +1,5 @@
-const bikesData = [
+// Default bikes data
+const defaultBikesData = [
   {
     id: 1,
     name: "Honda CD 70",
@@ -12,17 +13,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black", "Blue"],
     image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop",
-    description: "Pakistan ki sab se popular 70cc bike. Reliable, fuel efficient aur low maintenance. Daily commuting ke liye perfect choice.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled, OHV",
-      "Displacement": "72 cc",
-      "Max Power": "4.2 HP @ 8000 rpm",
-      "Max Torque": "4.5 Nm @ 6000 rpm",
-      "Fuel Tank": "8.5 Liters",
-      "Weight": "82 kg",
-      "Tyre Front": "2.25-17",
-      "Tyre Rear": "2.50-17"
-    }
+    description: "Pakistan ki sab se popular 70cc bike. Reliable, fuel efficient aur low maintenance.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled, OHV", "Displacement": "72 cc", "Max Power": "4.2 HP", "Fuel Tank": "8.5 Liters", "Weight": "82 kg" }
   },
   {
     id: 2,
@@ -37,16 +29,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black", "Silver"],
     image: "https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&h=400&fit=crop",
-    description: "Budget-friendly 70cc option with solid build quality. Ideal for first-time buyers looking for value.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled",
-      "Displacement": "70 cc",
-      "Max Power": "4.0 HP",
-      "Fuel Tank": "8 Liters",
-      "Weight": "80 kg",
-      "Tyre Front": "2.25-17",
-      "Tyre Rear": "2.50-17"
-    }
+    description: "Budget-friendly 70cc option with solid build quality.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled", "Displacement": "70 cc", "Max Power": "4.0 HP", "Fuel Tank": "8 Liters", "Weight": "80 kg" }
   },
   {
     id: 3,
@@ -61,14 +45,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black"],
     image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&h=400&fit=crop",
-    description: "Affordable and reliable 70cc commuter from Road Prince. Great for city roads.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled",
-      "Displacement": "70 cc",
-      "Max Power": "4.0 HP",
-      "Fuel Tank": "8 Liters",
-      "Weight": "79 kg"
-    }
+    description: "Affordable and reliable 70cc commuter from Road Prince.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled", "Displacement": "70 cc", "Max Power": "4.0 HP", "Fuel Tank": "8 Liters", "Weight": "79 kg" }
   },
   {
     id: 4,
@@ -83,14 +61,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black", "Blue"],
     image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&h=400&fit=crop",
-    description: "One of the most economical 70cc bikes in Pakistan. Perfect for tight budgets.",
-    specs: {
-      "Engine Type": "4-Stroke",
-      "Displacement": "70 cc",
-      "Max Power": "3.8 HP",
-      "Fuel Tank": "7.5 Liters",
-      "Weight": "78 kg"
-    }
+    description: "One of the most economical 70cc bikes in Pakistan.",
+    specs: { "Engine Type": "4-Stroke", "Displacement": "70 cc", "Max Power": "3.8 HP", "Fuel Tank": "7.5 Liters", "Weight": "78 kg" }
   },
   {
     id: 5,
@@ -105,17 +77,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black"],
     image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=600&h=400&fit=crop",
-    description: "Pakistan ka legend. Strong engine, excellent resale value aur unmatched reliability. CG 125 is the king of 125cc segment.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled, OHV",
-      "Displacement": "124.1 cc",
-      "Max Power": "11.0 HP @ 8000 rpm",
-      "Max Torque": "10.2 Nm @ 6000 rpm",
-      "Fuel Tank": "12.3 Liters",
-      "Weight": "110 kg",
-      "Tyre Front": "2.75-18",
-      "Tyre Rear": "90/90-18"
-    }
+    description: "Pakistan ka legend. Strong engine, excellent resale value.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled, OHV", "Displacement": "124.1 cc", "Max Power": "11.0 HP", "Fuel Tank": "12.3 Liters", "Weight": "110 kg" }
   },
   {
     id: 6,
@@ -130,16 +93,8 @@ const bikesData = [
     start: "Self + Kick",
     colors: ["Red", "Black", "Blue"],
     image: "https://images.unsplash.com/photo-1591637333184-19aa90d6d885?w=600&h=400&fit=crop",
-    description: "Premium 125cc with superior comfort, refined engine and excellent build quality. For those who want something above ordinary.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled, SOHC",
-      "Displacement": "124 cc",
-      "Max Power": "10.0 HP",
-      "Max Torque": "9.6 Nm",
-      "Fuel Tank": "12 Liters",
-      "Weight": "120 kg",
-      "Transmission": "5-Speed"
-    }
+    description: "Premium 125cc with superior comfort and refined engine.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled, SOHC", "Displacement": "124 cc", "Max Power": "10.0 HP", "Fuel Tank": "12 Liters", "Weight": "120 kg" }
   },
   {
     id: 7,
@@ -154,14 +109,8 @@ const bikesData = [
     start: "Self + Kick",
     colors: ["Black", "Red", "Blue"],
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    description: "Sporty 150cc from Suzuki. Powerful engine with great highway manners and stylish looks.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled",
-      "Displacement": "149 cc",
-      "Max Power": "13.5 HP",
-      "Fuel Tank": "12 Liters",
-      "Weight": "135 kg"
-    }
+    description: "Sporty 150cc from Suzuki with great highway manners.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled", "Displacement": "149 cc", "Max Power": "13.5 HP", "Fuel Tank": "12 Liters", "Weight": "135 kg" }
   },
   {
     id: 8,
@@ -176,14 +125,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black", "Silver"],
     image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop",
-    description: "Value-for-money 125cc option. Decent performance at a very competitive price.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled",
-      "Displacement": "125 cc",
-      "Max Power": "9.5 HP",
-      "Fuel Tank": "11 Liters",
-      "Weight": "105 kg"
-    }
+    description: "Value-for-money 125cc option.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled", "Displacement": "125 cc", "Max Power": "9.5 HP", "Fuel Tank": "11 Liters", "Weight": "105 kg" }
   },
   {
     id: 9,
@@ -198,14 +141,8 @@ const bikesData = [
     start: "Kick",
     colors: ["Red", "Black"],
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop",
-    description: "Solid mid-range 125cc from Road Prince. Good balance of price and features.",
-    specs: {
-      "Engine Type": "4-Stroke",
-      "Displacement": "125 cc",
-      "Max Power": "9.8 HP",
-      "Fuel Tank": "11.5 Liters",
-      "Weight": "108 kg"
-    }
+    description: "Solid mid-range 125cc from Road Prince.",
+    specs: { "Engine Type": "4-Stroke", "Displacement": "125 cc", "Max Power": "9.8 HP", "Fuel Tank": "11.5 Liters", "Weight": "108 kg" }
   },
   {
     id: 10,
@@ -220,16 +157,8 @@ const bikesData = [
     start: "Self + Kick",
     colors: ["Red", "Black", "Silver", "Blue"],
     image: "https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=600&h=400&fit=crop",
-    description: "Premium 150cc sports-commuter from Honda. Stylish design, strong performance and excellent features.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled, OHC",
-      "Displacement": "149.2 cc",
-      "Max Power": "12.4 HP @ 8000 rpm",
-      "Max Torque": "12.5 Nm @ 6000 rpm",
-      "Fuel Tank": "12 Liters",
-      "Weight": "127 kg",
-      "Transmission": "5-Speed"
-    }
+    description: "Premium 150cc sports-commuter from Honda.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled, OHC", "Displacement": "149.2 cc", "Max Power": "12.4 HP", "Fuel Tank": "12 Liters", "Weight": "127 kg" }
   },
   {
     id: 11,
@@ -243,15 +172,9 @@ const bikesData = [
     transmission: "5-Speed",
     start: "Self + Kick",
     colors: ["Black", "Red"],
-    image: "https://images.unsplash.com/photo-1615172286997-8c4c0b0a0b0b?w=600&h=400&fit=crop",
-    description: "Adventure-oriented version of YBR with dual-purpose tyres and enhanced styling.",
-    specs: {
-      "Engine Type": "4-Stroke, SOHC",
-      "Displacement": "124 cc",
-      "Max Power": "10 HP",
-      "Fuel Tank": "12 Liters",
-      "Weight": "125 kg"
-    }
+    image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop",
+    description: "Adventure-oriented version of YBR.",
+    specs: { "Engine Type": "4-Stroke, SOHC", "Displacement": "124 cc", "Max Power": "10 HP", "Fuel Tank": "12 Liters", "Weight": "125 kg" }
   },
   {
     id: 12,
@@ -266,14 +189,8 @@ const bikesData = [
     start: "Self + Kick",
     colors: ["Red", "Black", "Blue"],
     image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&h=400&fit=crop",
-    description: "Stylish 100cc from Honda with self-start. Perfect step-up from 70cc bikes.",
-    specs: {
-      "Engine Type": "4-Stroke, Air Cooled",
-      "Displacement": "97.1 cc",
-      "Max Power": "7.5 HP",
-      "Fuel Tank": "9.7 Liters",
-      "Weight": "98 kg"
-    }
+    description: "Stylish 100cc from Honda with self-start.",
+    specs: { "Engine Type": "4-Stroke, Air Cooled", "Displacement": "97.1 cc", "Max Power": "7.5 HP", "Fuel Tank": "9.7 Liters", "Weight": "98 kg" }
   },
   {
     id: 13,
@@ -288,15 +205,8 @@ const bikesData = [
     start: "Electric",
     colors: ["White", "Black", "Red"],
     image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop",
-    description: "Modern electric bike for city commuting. Zero fuel cost and silent operation.",
-    specs: {
-      "Motor": "1000W",
-      "Battery": "Lithium-ion",
-      "Range": "60-80 km",
-      "Charging Time": "4-6 hours",
-      "Top Speed": "45-55 km/h",
-      "Weight": "75 kg"
-    }
+    description: "Modern electric bike for city commuting.",
+    specs: { "Motor": "1000W", "Battery": "Lithium-ion", "Range": "60-80 km", "Charging Time": "4-6 hours", "Top Speed": "45-55 km/h" }
   },
   {
     id: 14,
@@ -311,13 +221,64 @@ const bikesData = [
     start: "Electric",
     colors: ["Black", "Blue", "White"],
     image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop",
-    description: "Affordable electric option for daily short-distance travel. Eco-friendly and low running cost.",
-    specs: {
-      "Motor": "800W",
-      "Battery": "Lead Acid / Lithium options",
-      "Range": "50-70 km",
-      "Charging Time": "5-7 hours",
-      "Top Speed": "40-50 km/h"
-    }
+    description: "Affordable electric option for daily travel.",
+    specs: { "Motor": "800W", "Battery": "Lead Acid / Lithium", "Range": "50-70 km", "Charging Time": "5-7 hours", "Top Speed": "40-50 km/h" }
   }
 ];
+
+// Load bikes from localStorage or use default
+function loadBikes() {
+  try {
+    const stored = localStorage.getItem("vm_bikes");
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (e) {}
+  return JSON.parse(JSON.stringify(defaultBikesData)); // deep copy
+}
+
+// Save bikes to localStorage
+function saveBikes(bikes) {
+  localStorage.setItem("vm_bikes", JSON.stringify(bikes));
+}
+
+// Global bikes array (used by all pages)
+let bikesData = loadBikes();
+
+// Helper: get next ID
+function getNextBikeId() {
+  if (bikesData.length === 0) return 1;
+  return Math.max(...bikesData.map(b => b.id)) + 1;
+}
+
+// Add bike
+function addBike(bike) {
+  bike.id = getNextBikeId();
+  bikesData.push(bike);
+  saveBikes(bikesData);
+  return bike;
+}
+
+// Update bike
+function updateBike(id, updated) {
+  const index = bikesData.findIndex(b => b.id === id);
+  if (index !== -1) {
+    bikesData[index] = { ...bikesData[index], ...updated, id: id };
+    saveBikes(bikesData);
+    return bikesData[index];
+  }
+  return null;
+}
+
+// Delete bike
+function deleteBike(id) {
+  bikesData = bikesData.filter(b => b.id !== id);
+  saveBikes(bikesData);
+  return true;
+}
+
+// Reset to default
+function resetBikes() {
+  bikesData = JSON.parse(JSON.stringify(defaultBikesData));
+  saveBikes(bikesData);
+}

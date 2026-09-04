@@ -133,7 +133,7 @@
         <div class="bg-secondary border border-gray-800 rounded-2xl p-6">
           <h2 class="font-bold text-lg mb-4">Quick Actions</h2>
           <div class="flex flex-wrap gap-3">
-            <button onclick="showSection('bikes')" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
+            <button onclick="showSection('bikes'); setTimeout(() => openBikeModal(), 100)" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
               <i class="fas fa-plus mr-2"></i> Add New Bike
             </button>
             <button onclick="showSection('bookings')" class="border border-gray-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-accent transition">
@@ -150,7 +150,7 @@
       <section id="section-bikes" class="hidden">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h1 class="text-2xl md:text-3xl font-bold">Manage Bikes</h1>
-          <button onclick="alert('In full version: Add Bike form will open here')" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
+          <button onclick="openBikeModal()" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
             <i class="fas fa-plus mr-2"></i> Add Bike
           </button>
         </div>
@@ -175,6 +175,93 @@
           </div>
         </div>
       </section>
+
+      <!-- ADD / EDIT BIKE MODAL -->
+      <div id="bike-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70">
+        <div class="bg-secondary border border-gray-700 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div class="flex items-center justify-between p-5 border-b border-gray-700">
+            <h2 class="text-xl font-bold" id="modal-title">Add New Bike</h2>
+            <button onclick="closeBikeModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+          </div>
+          <form id="bike-form" class="p-5 space-y-4">
+            <input type="hidden" id="bike-id">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Bike Name *</label>
+                <input type="text" id="bike-name" required placeholder="e.g. Honda CD 70"
+                       class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Brand *</label>
+                <select id="bike-brand" required class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+                  <option value="Honda">Honda</option>
+                  <option value="Yamaha">Yamaha</option>
+                  <option value="Suzuki">Suzuki</option>
+                  <option value="Unique">Unique</option>
+                  <option value="Road Prince">Road Prince</option>
+                  <option value="Super Power">Super Power</option>
+                  <option value="Jolta">Jolta</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Category *</label>
+                <select id="bike-category" required class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+                  <option value="70cc">70cc</option>
+                  <option value="100cc">100cc</option>
+                  <option value="125cc">125cc</option>
+                  <option value="150cc">150cc</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Price (Rs.) *</label>
+                <input type="number" id="bike-price" required placeholder="159900"
+                       class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Engine</label>
+                <input type="text" id="bike-engine" placeholder="70cc / 125cc / Electric"
+                       class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1">Fuel Type</label>
+                <select id="bike-fuel" class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+                  <option value="Petrol">Petrol</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1">Mileage</label>
+              <input type="text" id="bike-mileage" placeholder="55-60 km/l"
+                     class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1">Image URL</label>
+              <input type="url" id="bike-image" placeholder="https://..."
+                     class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1">Description</label>
+              <textarea id="bike-description" rows="2" placeholder="Short description..."
+                        class="w-full bg-primary border border-gray-600 rounded-xl px-4 py-2.5 focus:outline-none focus:border-accent"></textarea>
+            </div>
+            <div class="flex gap-3 pt-2">
+              <button type="submit" class="btn-primary flex-1 py-3 rounded-xl font-bold">
+                <i class="fas fa-save mr-2"></i> <span id="save-btn-text">Save Bike</span>
+              </button>
+              <button type="button" onclick="closeBikeModal()" class="border border-gray-600 flex-1 py-3 rounded-xl font-semibold hover:border-gray-400 transition">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
 
       <!-- Bookings Section -->
       <section id="section-bookings" class="hidden">
@@ -282,25 +369,128 @@
       event?.currentTarget?.classList.remove('text-gray-300');
     }
 
-    // Load bikes table
-    document.addEventListener('DOMContentLoaded', () => {
+    // ========== BIKES CRUD ==========
+    let editingBikeId = null;
+
+    function renderBikesTable() {
       const tbody = document.getElementById('admin-bikes-table');
-      if (tbody && typeof bikesData !== 'undefined') {
-        tbody.innerHTML = bikesData.map((bike, i) => `
-          <tr class="border-t border-gray-800 hover:bg-primary/30">
-            <td class="px-4 py-3 text-gray-500">${i + 1}</td>
-            <td class="px-4 py-3 font-medium">${bike.name}</td>
-            <td class="px-4 py-3">${bike.brand}</td>
-            <td class="px-4 py-3"><span class="bg-gray-700 text-xs px-2 py-1 rounded">${bike.category}</span></td>
-            <td class="px-4 py-3 text-accent font-semibold">Rs. ${bike.price.toLocaleString()}</td>
-            <td class="px-4 py-3">
-              <button onclick="alert('Edit: ${bike.name}')" class="text-blue-400 hover:text-blue-300 mr-3"><i class="fas fa-edit"></i></button>
-              <button onclick="alert('Delete: ${bike.name}')" class="text-red-400 hover:text-red-300"><i class="fas fa-trash"></i></button>
-            </td>
-          </tr>
-        `).join('');
+      if (!tbody) return;
+
+      // Refresh from storage
+      bikesData = loadBikes();
+
+      // Update stat
+      const statEl = document.getElementById('stat-bikes');
+      if (statEl) statEl.textContent = bikesData.length;
+
+      if (bikesData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="px-4 py-8 text-center text-gray-500">No bikes found. Click "Add Bike" to add one.</td></tr>`;
+        return;
       }
+
+      tbody.innerHTML = bikesData.map((bike, i) => `
+        <tr class="border-t border-gray-800 hover:bg-primary/30">
+          <td class="px-4 py-3 text-gray-500">${i + 1}</td>
+          <td class="px-4 py-3 font-medium">${bike.name}</td>
+          <td class="px-4 py-3">${bike.brand}</td>
+          <td class="px-4 py-3"><span class="bg-gray-700 text-xs px-2 py-1 rounded">${bike.category}</span></td>
+          <td class="px-4 py-3 text-accent font-semibold">Rs. ${Number(bike.price).toLocaleString()}</td>
+          <td class="px-4 py-3 whitespace-nowrap">
+            <button onclick="editBike(${bike.id})" class="text-blue-400 hover:text-blue-300 mr-3" title="Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="confirmDelete(${bike.id}, '${bike.name.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-300" title="Delete">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openBikeModal(bike = null) {
+      editingBikeId = bike ? bike.id : null;
+      document.getElementById('modal-title').textContent = bike ? 'Edit Bike' : 'Add New Bike';
+      document.getElementById('save-btn-text').textContent = bike ? 'Update Bike' : 'Save Bike';
+      document.getElementById('bike-id').value = bike ? bike.id : '';
+      document.getElementById('bike-name').value = bike ? bike.name : '';
+      document.getElementById('bike-brand').value = bike ? bike.brand : 'Honda';
+      document.getElementById('bike-category').value = bike ? bike.category : '70cc';
+      document.getElementById('bike-price').value = bike ? bike.price : '';
+      document.getElementById('bike-engine').value = bike ? (bike.engine || '') : '';
+      document.getElementById('bike-fuel').value = bike ? (bike.fuel || 'Petrol') : 'Petrol';
+      document.getElementById('bike-mileage').value = bike ? (bike.mileage || '') : '';
+      document.getElementById('bike-image').value = bike ? (bike.image || '') : '';
+      document.getElementById('bike-description').value = bike ? (bike.description || '') : '';
+      document.getElementById('bike-modal').classList.remove('hidden');
+    }
+
+    function closeBikeModal() {
+      document.getElementById('bike-modal').classList.add('hidden');
+      editingBikeId = null;
+      document.getElementById('bike-form').reset();
+    }
+
+    function editBike(id) {
+      const bike = bikesData.find(b => b.id === id);
+      if (bike) openBikeModal(bike);
+    }
+
+    function confirmDelete(id, name) {
+      if (confirm(`Are you sure you want to delete "${name}"?\n\nYeh bike website se bhi remove ho jayegi.`)) {
+        deleteBike(id);
+        renderBikesTable();
+        alert('Bike deleted successfully!');
+      }
+    }
+
+    // Form submit
+    document.getElementById('bike-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const bikeObj = {
+        name: document.getElementById('bike-name').value.trim(),
+        brand: document.getElementById('bike-brand').value,
+        category: document.getElementById('bike-category').value,
+        price: parseInt(document.getElementById('bike-price').value) || 0,
+        engine: document.getElementById('bike-engine').value.trim() || document.getElementById('bike-category').value,
+        fuel: document.getElementById('bike-fuel').value,
+        mileage: document.getElementById('bike-mileage').value.trim() || 'N/A',
+        transmission: '4-Speed',
+        start: 'Kick',
+        colors: ['Red', 'Black'],
+        image: document.getElementById('bike-image').value.trim() || 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&h=400&fit=crop',
+        description: document.getElementById('bike-description').value.trim() || '',
+        specs: { "Engine": document.getElementById('bike-engine').value || document.getElementById('bike-category').value }
+      };
+
+      if (editingBikeId) {
+        updateBike(editingBikeId, bikeObj);
+        alert('Bike updated successfully!');
+      } else {
+        addBike(bikeObj);
+        alert('Bike added successfully!');
+      }
+
+      closeBikeModal();
+      renderBikesTable();
     });
+
+    // Close modal on outside click
+    document.getElementById('bike-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeBikeModal();
+    });
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBikesTable();
+    });
+
+    // Also render when switching to bikes section
+    const originalShowSection = showSection;
+    showSection = function(name) {
+      originalShowSection(name);
+      if (name === 'bikes') renderBikesTable();
+    };
   </script>
 </body>
 </html>
