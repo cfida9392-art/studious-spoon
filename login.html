@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    input:focus { outline: none; border-color: #E10600; }
+  </style>
+</head>
+<body class="bg-primary text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <a href="index.html" class="inline-flex items-center gap-2">
+        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center font-black text-2xl">V</div>
+        <div>
+          <span class="font-bold text-2xl">Velocity</span><span class="text-accent font-bold text-2xl">Motors</span>
+        </div>
+      </a>
+      <p class="text-gray-400 mt-2">Login to your account</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="bg-secondary border border-gray-800 rounded-2xl p-8 shadow-2xl">
+      
+      <!-- Tabs -->
+      <div class="flex mb-6 bg-primary rounded-full p-1">
+        <button id="tab-user" onclick="switchTab('user')" 
+                class="flex-1 py-2.5 rounded-full text-sm font-semibold transition bg-accent text-white">
+          User Login
+        </button>
+        <button id="tab-admin" onclick="switchTab('admin')" 
+                class="flex-1 py-2.5 rounded-full text-sm font-semibold transition text-gray-400 hover:text-white">
+          Admin Login
+        </button>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error-msg" class="hidden mb-4 bg-red-900/40 border border-red-700 text-red-300 px-4 py-3 rounded-xl text-sm">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span id="error-text"></span>
+      </div>
+
+      <!-- Success Message -->
+      <div id="success-msg" class="hidden mb-4 bg-green-900/40 border border-green-700 text-green-300 px-4 py-3 rounded-xl text-sm">
+        <i class="fas fa-check-circle mr-2"></i>
+        Login successful! Redirecting...
+      </div>
+
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Username</label>
+          <div class="relative">
+            <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+            <input type="text" id="username" required placeholder="Enter username"
+                   class="w-full bg-primary border border-gray-700 rounded-xl py-3 pl-11 pr-4 focus:border-accent transition">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Password</label>
+          <div class="relative">
+            <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+            <input type="password" id="password" required placeholder="Enter password"
+                   class="w-full bg-primary border border-gray-700 rounded-xl py-3 pl-11 pr-4 focus:border-accent transition">
+            <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white">
+              <i id="eye-icon" class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" class="rounded accent-red-600">
+            <span class="text-gray-400">Remember me</span>
+          </label>
+          <a href="#" class="text-accent hover:underline">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-bold text-lg transition">
+          <i class="fas fa-sign-in-alt mr-2"></i> Login
+        </button>
+      </form>
+
+      <!-- Demo Credentials -->
+      <div class="mt-6 p-4 bg-primary/50 border border-gray-700 rounded-xl text-sm">
+        <p class="text-gray-400 mb-2 font-semibold">Demo Credentials:</p>
+        <div class="space-y-1 text-gray-300">
+          <p><span class="text-accent">Admin:</span> admin / admin123</p>
+          <p><span class="text-blue-400">User:</span> user / user123</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-6">
+      <a href="index.html" class="hover:text-accent transition"><i class="fas fa-arrow-left mr-1"></i> Back to Home</a>
+    </p>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    let currentTab = 'user';
+
+    function switchTab(tab) {
+      currentTab = tab;
+      const userBtn = document.getElementById('tab-user');
+      const adminBtn = document.getElementById('tab-admin');
+
+      if (tab === 'user') {
+        userBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition bg-accent text-white";
+        adminBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition text-gray-400 hover:text-white";
+      } else {
+        adminBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition bg-accent text-white";
+        userBtn.className = "flex-1 py-2.5 rounded-full text-sm font-semibold transition text-gray-400 hover:text-white";
+      }
+    }
+
+    function togglePassword() {
+      const input = document.getElementById('password');
+      const icon = document.getElementById('eye-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error-msg');
+      const successDiv = document.getElementById('success-msg');
+      
+      errorDiv.classList.add('hidden');
+      successDiv.classList.add('hidden');
+
+      const result = login(username, password);
+
+      if (result.success) {
+        // Check if trying to login as admin with user account
+        if (currentTab === 'admin' && result.user.role !== 'admin') {
+          errorDiv.classList.remove('hidden');
+          document.getElementById('error-text').textContent = "This account is not an Admin account.";
+          localStorage.removeItem("vm_user");
+          return;
+        }
+
+        successDiv.classList.remove('hidden');
+        
+        setTimeout(() => {
+          if (result.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            const redirect = new URLSearchParams(window.location.search).get('redirect');
+            window.location.href = redirect || 'index.html';
+          }
+        }, 1000);
+      } else {
+        errorDiv.classList.remove('hidden');
+        document.getElementById('error-text').textContent = result.message;
+      }
+    });
+
+    // If already logged in, redirect
+    if (isLoggedIn()) {
+      const user = getCurrentUser();
+      if (user.role === 'admin') {
+        window.location.href = 'admin.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>

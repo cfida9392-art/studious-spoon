@@ -56,7 +56,7 @@
           <a href="about.html" class="text-sm font-medium hover:text-accent transition">About</a>
           <a href="book.html" class="text-sm font-medium hover:text-accent transition">Test Ride</a>
           <a href="contact.html" class="text-sm font-medium text-accent">Contact</a>
-          <a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a>
+          <div id="auth-area" class="flex items-center gap-3"><a href="login.html" class="text-sm font-medium hover:text-accent transition">Login</a><a href="book.html" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Book Test Ride</a></div>
         </div>
         <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
       </div>
@@ -67,7 +67,8 @@
         <a href="bikes.html" class="block py-2 hover:text-accent">Bikes</a>
         <a href="about.html" class="block py-2 hover:text-accent">About</a>
         <a href="book.html" class="block py-2 hover:text-accent">Test Ride</a>
-        <a href="contact.html" class="block py-2 text-accent font-medium">Contact</a>
+        <a href="contact.html" class="block py-2 hover:text-accent">Contact</a>
+        <div id="mobile-auth-area"><a href="login.html" class="block py-2 hover:text-accent">Login / Sign In</a></div>
       </div>
     </div>
   </nav>
@@ -189,6 +190,7 @@
     <i class="fab fa-whatsapp text-white text-3xl"></i>
   </a>
 
+  <script src="js/auth.js"></script>
   <script src="js/main.js"></script>
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {

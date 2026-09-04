@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Velocity Motors Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A0A0A',
+            secondary: '#1A1A1A',
+            accent: '#E10600',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary { background: #E10600; }
+    .btn-primary:hover { background: #c00500; }
+    .sidebar-link.active { background: #E10600; color: white; }
+    .sidebar-link:hover { background: rgba(225,6,0,0.15); }
+  </style>
+</head>
+<body class="bg-primary text-white min-h-screen">
+
+  <!-- Top Bar -->
+  <nav class="bg-secondary border-b border-gray-800 px-4 py-3 flex items-center justify-between sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <button id="sidebar-toggle" class="lg:hidden text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-9 h-9 bg-accent rounded-full flex items-center justify-center font-black">V</div>
+        <span class="font-bold text-lg hidden sm:inline">Velocity<span class="text-accent">Motors</span></span>
+      </a>
+      <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-2 py-1 rounded ml-2">ADMIN</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <span class="text-sm text-gray-300" id="admin-name"></span>
+      <button onclick="logout()" class="text-sm border border-gray-600 px-4 py-1.5 rounded-full hover:border-red-500 hover:text-red-400 transition">
+        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-secondary border-r border-gray-800 min-h-[calc(100vh-57px)] fixed lg:sticky top-[57px] left-0 z-30 transform -translate-x-full lg:translate-x-0 transition duration-300">
+      <div class="p-4 space-y-1">
+        <a href="#dashboard" onclick="showSection('dashboard')" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition">
+          <i class="fas fa-tachometer-alt w-5"></i> Dashboard
+        </a>
+        <a href="#bikes" onclick="showSection('bikes')" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition text-gray-300">
+          <i class="fas fa-motorcycle w-5"></i> Manage Bikes
+        </a>
+        <a href="#bookings" onclick="showSection('bookings')" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition text-gray-300">
+          <i class="fas fa-calendar-check w-5"></i> Test Ride Bookings
+        </a>
+        <a href="#users" onclick="showSection('users')" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition text-gray-300">
+          <i class="fas fa-users w-5"></i> Users
+        </a>
+        <a href="#messages" onclick="showSection('messages')" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition text-gray-300">
+          <i class="fas fa-envelope w-5"></i> Messages
+        </a>
+        <hr class="border-gray-700 my-3">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-400 hover:text-white transition">
+          <i class="fas fa-home w-5"></i> View Website
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-8 lg:ml-0">
+      
+      <!-- Dashboard Section -->
+      <section id="section-dashboard">
+        <h1 class="text-2xl md:text-3xl font-bold mb-6">Dashboard</h1>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm">Total Bikes</p>
+                <p class="text-3xl font-black mt-1" id="stat-bikes">14</p>
+              </div>
+              <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-motorcycle text-accent text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm">Test Ride Requests</p>
+                <p class="text-3xl font-black mt-1" id="stat-bookings">0</p>
+              </div>
+              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-calendar-check text-blue-400 text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm">Messages</p>
+                <p class="text-3xl font-black mt-1" id="stat-messages">0</p>
+              </div>
+              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-envelope text-green-400 text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-secondary border border-gray-800 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm">Registered Users</p>
+                <p class="text-3xl font-black mt-1">3</p>
+              </div>
+              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-users text-purple-400 text-xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-6">
+          <h2 class="font-bold text-lg mb-4">Quick Actions</h2>
+          <div class="flex flex-wrap gap-3">
+            <button onclick="showSection('bikes')" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
+              <i class="fas fa-plus mr-2"></i> Add New Bike
+            </button>
+            <button onclick="showSection('bookings')" class="border border-gray-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-accent transition">
+              View Bookings
+            </button>
+            <a href="https://wa.me/923168122916" target="_blank" class="border border-green-600 text-green-400 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-green-600/10 transition">
+              <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bikes Section -->
+      <section id="section-bikes" class="hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <h1 class="text-2xl md:text-3xl font-bold">Manage Bikes</h1>
+          <button onclick="alert('In full version: Add Bike form will open here')" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold">
+            <i class="fas fa-plus mr-2"></i> Add Bike
+          </button>
+        </div>
+
+        <div class="bg-secondary border border-gray-800 rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-primary/50 text-gray-400">
+                <tr>
+                  <th class="px-4 py-3">#</th>
+                  <th class="px-4 py-3">Bike Name</th>
+                  <th class="px-4 py-3">Brand</th>
+                  <th class="px-4 py-3">Category</th>
+                  <th class="px-4 py-3">Price</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-bikes-table">
+                <!-- Filled by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bookings Section -->
+      <section id="section-bookings" class="hidden">
+        <h1 class="text-2xl md:text-3xl font-bold mb-6">Test Ride Bookings</h1>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-8 text-center">
+          <i class="fas fa-calendar-check text-5xl text-gray-600 mb-4"></i>
+          <p class="text-gray-400 mb-2">No bookings yet</p>
+          <p class="text-sm text-gray-500">When customers submit Test Ride form, they will appear here.</p>
+          <p class="text-xs text-gray-600 mt-4">(In full version with backend, bookings will be stored in database)</p>
+        </div>
+      </section>
+
+      <!-- Users Section -->
+      <section id="section-users" class="hidden">
+        <h1 class="text-2xl md:text-3xl font-bold mb-6">Users</h1>
+        <div class="bg-secondary border border-gray-800 rounded-2xl overflow-hidden">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-primary/50 text-gray-400">
+              <tr>
+                <th class="px-4 py-3">Username</th>
+                <th class="px-4 py-3">Name</th>
+                <th class="px-4 py-3">Email</th>
+                <th class="px-4 py-3">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-800">
+                <td class="px-4 py-3 font-medium">admin</td>
+                <td class="px-4 py-3">Admin</td>
+                <td class="px-4 py-3 text-gray-400">admin@velocitymotors.pk</td>
+                <td class="px-4 py-3"><span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded">Admin</span></td>
+              </tr>
+              <tr class="border-t border-gray-800">
+                <td class="px-4 py-3 font-medium">user</td>
+                <td class="px-4 py-3">Customer</td>
+                <td class="px-4 py-3 text-gray-400">user@example.com</td>
+                <td class="px-4 py-3"><span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded">User</span></td>
+              </tr>
+              <tr class="border-t border-gray-800">
+                <td class="px-4 py-3 font-medium">ali</td>
+                <td class="px-4 py-3">Ali Khan</td>
+                <td class="px-4 py-3 text-gray-400">ali@example.com</td>
+                <td class="px-4 py-3"><span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded">User</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Messages Section -->
+      <section id="section-messages" class="hidden">
+        <h1 class="text-2xl md:text-3xl font-bold mb-6">Messages</h1>
+        <div class="bg-secondary border border-gray-800 rounded-2xl p-8 text-center">
+          <i class="fas fa-envelope text-5xl text-gray-600 mb-4"></i>
+          <p class="text-gray-400">No messages yet</p>
+          <p class="text-sm text-gray-500 mt-2">Contact form submissions will appear here.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/bikes-data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Protect admin page
+    requireAdmin();
+
+    // Show admin name
+    const user = getCurrentUser();
+    if (user) {
+      document.getElementById('admin-name').textContent = user.name + ' (Admin)';
+    }
+
+    // Sidebar toggle for mobile
+    document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+    });
+
+    // Show section
+    function showSection(name) {
+      document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+      document.getElementById('section-' + name).classList.remove('hidden');
+
+      // Update active link
+      document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active', 'text-white');
+        link.classList.add('text-gray-300');
+      });
+      event?.currentTarget?.classList.add('active');
+      event?.currentTarget?.classList.remove('text-gray-300');
+    }
+
+    // Load bikes table
+    document.addEventListener('DOMContentLoaded', () => {
+      const tbody = document.getElementById('admin-bikes-table');
+      if (tbody && typeof bikesData !== 'undefined') {
+        tbody.innerHTML = bikesData.map((bike, i) => `
+          <tr class="border-t border-gray-800 hover:bg-primary/30">
+            <td class="px-4 py-3 text-gray-500">${i + 1}</td>
+            <td class="px-4 py-3 font-medium">${bike.name}</td>
+            <td class="px-4 py-3">${bike.brand}</td>
+            <td class="px-4 py-3"><span class="bg-gray-700 text-xs px-2 py-1 rounded">${bike.category}</span></td>
+            <td class="px-4 py-3 text-accent font-semibold">Rs. ${bike.price.toLocaleString()}</td>
+            <td class="px-4 py-3">
+              <button onclick="alert('Edit: ${bike.name}')" class="text-blue-400 hover:text-blue-300 mr-3"><i class="fas fa-edit"></i></button>
+              <button onclick="alert('Delete: ${bike.name}')" class="text-red-400 hover:text-red-300"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>
